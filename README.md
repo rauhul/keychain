@@ -13,17 +13,17 @@ Users that want to deviate from this default implementation can specifiy keychai
 ## General Usage
 
 Store a string value to keychain:
-```
+``` swift
 let saveSuccessful = Keychain.default.store("exampleValue", forKey: "exampleKey")
 ```
 
 Retrieve a string value from keychain:
-```
+``` swift
 let retrievedString = Keychain.default.retrieve(String.self, forKey: "exampleKey")
 ```
 
 Delete a string value from keychain:
-```
+``` swift
 let removeSuccessful = Keychain.default.removeObject(forKey: "exampleKey")
 ```
 
@@ -35,16 +35,20 @@ To share keychain items between your applications, you may specify an access gro
 
 To set a custom service name identifier or access group, you may create your own keychain instance as follows:
 
-```
+``` swift
 let uniqueServiceName = "customServiceName"
+
 let uniqueAccessGroup = "sharedAccessGroupName"
+
 let customKeychainInstance = Keychain(serviceName: uniqueServiceName, accessGroup: uniqueAccessGroup)
 ```
 
 The custom instance can then be used in place of the provided instance:
-```
+``` swift
 let saveSuccessful = customKeychainInstance.store("exampleValue", forKey: "exampleKey")
+
 let retrievedString = customKeychainInstance.retrieve(String.self, forKey: "exampleKey")
+
 let removeSuccessful = customKeychainInstance.removeObject(forKey: "exampleKey")
 ```
 
@@ -69,7 +73,7 @@ end
 ```
 
 To use the keychain in your app, import Keychain into the file(s) where you want to use it.
-```
+``` swift
 import Keychain
 ```
 
