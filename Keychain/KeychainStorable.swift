@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 /// KeychainStorable defines a protocol a type must satisfy in order to be used in a Keychain operation; ie Stored, Retrieved, etc...
 public protocol KeychainStorable {
     /// Converts a KeychainStorable Type into Data to be stored in the Keychain
@@ -17,62 +18,75 @@ public protocol KeychainStorable {
     init?(keychainRepresentation: Data)
 }
 
+
 /// Extend Bool to be KeychainStorable
 extension Bool: KeychainStorable {
-    /**
-        Converts a Bool into Data to be stored in the Keychain
-     */
+    /// Converts a Bool into Data to be stored in the Keychain
     public func keychainRepresentation() -> Data? {
         return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
     }
     
-    /**
-        Converts Data retrieved from the Keychain into a Bool
-     */
+    /// Converts Data retrieved from the Keychain into a Bool
     public init?(keychainRepresentation: Data) {
         guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
         self = number.boolValue
     }
 }
 
+
 /// Extend Int to be KeychainStorable
 extension Int: KeychainStorable {
+    /// Converts an Int into Data to be stored in the Keychain
     public func keychainRepresentation() -> Data? {
         return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
     }
+    
+    /// Converts Data retrieved from the Keychain into an Int
     public init?(keychainRepresentation: Data) {
         guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
         self = number.intValue
     }
 }
 
+
 /// Extend Float to be KeychainStorable
 extension Float: KeychainStorable {
+    /// Converts a Float into Data to be stored in the Keychain
     public func keychainRepresentation() -> Data? {
         return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
     }
+    
+    /// Converts Data retrieved from the Keychain into a Float
     public init?(keychainRepresentation: Data) {
         guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
         self = number.floatValue
     }
 }
 
+
 /// Extend Double to be KeychainStorable
 extension Double: KeychainStorable {
+    /// Converts a Double into Data to be stored in the Keychain
     public func keychainRepresentation() -> Data? {
         return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
     }
+    
+    /// Converts Data retrieved from the Keychain into a Double
     public init?(keychainRepresentation: Data) {
         guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
         self = number.doubleValue
     }
 }
 
+
 /// Extend Data to be KeychainStorable
 extension Data: KeychainStorable {
+    /// Provides an interface for Data to be stored in the Keychain
     public func keychainRepresentation() -> Data? {
         return self
     }
+    
+    /// Provides an interface for Data to be created by the Keychain
     public init?(keychainRepresentation: Data) {
         self = keychainRepresentation
     }
@@ -81,9 +95,12 @@ extension Data: KeychainStorable {
 
 /// Extend String to be KeychainStorable
 extension String: KeychainStorable {
+    /// Converts a String into Data to be stored in the Keychain
     public func keychainRepresentation() -> Data? {
         return data(using: .utf8)
     }
+    
+    /// Converts Data retrieved from the Keychain into a String
     public init?(keychainRepresentation: Data) {
         guard let string = String(data: keychainRepresentation, encoding: String.Encoding.utf8) else {
             return nil
@@ -94,7 +111,7 @@ extension String: KeychainStorable {
 
 
 // FIXME: Make NSCoding KeychainStorable
-/*
+/**
 /// Extend NSCoding to be KeychainStorable
 extension KeychainStorable where Self: NSCoding {
     /// Converts an object conforming to NSCoding into Data to be stored in the Keychain
@@ -107,10 +124,7 @@ extension KeychainStorable where Self: NSCoding {
         guard let object = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSCoding else {
             return nil
         }
-        
         self = object
     }
-
 }
  */
-

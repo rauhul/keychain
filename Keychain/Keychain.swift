@@ -20,7 +20,7 @@ public func ==(_ lhs: CFString, _ rhs: CFString) -> Bool {
     return CFEqual(lhs, rhs)
 }
 
-/// `Keychain` is a class to make keychain access in Swift easy.
+/// Keychain is a class to make keychain access in Swift easy.
 open class Keychain {
     
     /// Predefined Accessibility levels used to secure Keychain items with various security levels.

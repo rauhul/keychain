@@ -8,21 +8,24 @@ If you need to customize the keychain access to use a custom identifier or acces
 
 By default, the Keychain saves data as a Generic Password type in the iOS Keychain. It saves items such that they can only be accessed when the app is unlocked and open. If you are not familiar with the iOS Keychain usage, this provides a safe default for using the keycain.
 
-Users that want to deviate from this default implementation can specifiy keychain accessibility for each request (store, retrieve, etc...) to a `Keychain` instance.
+Users that want to deviate from this default implementation can specifiy keychain accessibility for each request (store, retrieve, etc...) to a Keychain instance.
 
 ## General Usage
 
 Store a string value to keychain:
+
 ``` swift
 let saveSuccessful = Keychain.default.store("exampleValue", forKey: "exampleKey")
 ```
 
 Retrieve a string value from keychain:
+
 ``` swift
 let retrievedString = Keychain.default.retrieve(String.self, forKey: "exampleKey")
 ```
 
 Delete a string value from keychain:
+
 ``` swift
 let removeSuccessful = Keychain.default.removeObject(forKey: "exampleKey")
 ```
@@ -44,6 +47,7 @@ let customKeychainInstance = Keychain(serviceName: uniqueServiceName, accessGrou
 ```
 
 The custom instance can then be used in place of the provided instance:
+
 ``` swift
 let saveSuccessful = customKeychainInstance.store("exampleValue", forKey: "exampleKey")
 
@@ -55,6 +59,7 @@ let removeSuccessful = customKeychainInstance.removeObject(forKey: "exampleKey")
 ## Accessibility Options
 
 By default, all items saved to keychain can only be accessed when the device is unlocked. To change this accessibility, an optional "withAccessibility" param can be set on all requests. The enum Keychain.Accessibilty provides an easy way to select the accessibility level desired:
+
 ``` swift
 Keychain.default.store(<KeychainStorable>, forKey: "exampleKey", withAccessibility: .afterFirstUnlock)
 ```
@@ -63,6 +68,7 @@ Keychain.default.store(<KeychainStorable>, forKey: "exampleKey", withAccessibili
 
 ### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install SwiftKeychainAccess by adding it to your `Podfile`:
+
 ``` ruby
 use_frameworks!
 platform :ios, '10.0'
@@ -73,6 +79,7 @@ end
 ```
 
 To use the keychain in your app, import Keychain into the file(s) where you want to use it.
+
 ``` swift
 import Keychain
 ```
