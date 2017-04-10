@@ -45,11 +45,11 @@ class KeychainTests: XCTestCase {
             if retrievedOption == nil {
                 XCTAssertNotNil(retrievedOption)
             } else {
-                XCTAssertEqual(retrievedOption!.rawValue, testOption.rawValue, "Accessibility does not match. Expected: \(retrievedOption!) Found: \(testOption)")
+                XCTAssertEqual(retrievedOption!, testOption, "Accessibility does not match. Expected: \(retrievedOption!) Found: \(testOption)")
             }
             
             // INFO: If re-using a key but with a different accessibility, first remove the previous key value using removeObjectForKey(:withAccessibility) using the same accessibilty it was saved with
-            let removeResult = Keychain.default.removeObject(forKey: key, withAccessibility: accessibilityOption.rawValue)
+            let removeResult = Keychain.default.removeObject(forKey: key, withAccessibility: accessibilityOption)
             XCTAssertTrue(removeResult, "Unable to remove value")
         }
     }
