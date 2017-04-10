@@ -2,8 +2,8 @@ Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
 
-  s.name         = "Keychain"
-  s.version      = "0.1.0"
+  s.name         = "SwiftKeychain"
+  s.version      = "0.1.1"
   s.summary      = "Keychain Access in Swift made easy"
 
   s.description  = <<-DESC
