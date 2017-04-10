@@ -2,7 +2,7 @@
 
 A simple inteferace for using the iOS Keychain, written in Swift. Heavily based on the work done by Jason Rendel in [SwiftKeychainWrapper](https://github.com/jrendel/SwiftKeychainWrapper).
 
-Provides singleton instance `KeychainWrapper.default` that is setup to work for most needs.
+Provides singleton instance `Keychain.default` that is setup to work for most needs.
 
 If you need to customize the keychain access to use a custom identifier or access group, you can create your own instance instead of using the provided singleton.
 
@@ -33,7 +33,7 @@ When the Keychain Wrapper is used, all keys are linked to a common identifier fo
 
 To share keychain items between your applications, you may specify an access group and use that same access group in each application.
 
-To set a custom service name identifier or access group, you may now create your own instance of the keychain wrapper as follows:
+To set a custom service name identifier or access group, you may create your own keychain instance as follows:
 
 ```
 let uniqueServiceName = "customServiceName"
