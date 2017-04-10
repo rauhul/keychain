@@ -55,7 +55,7 @@ let removeSuccessful = customKeychainInstance.removeObject(forKey: "exampleKey")
 ## Accessibility Options
 
 By default, all items saved to keychain can only be accessed when the device is unlocked. To change this accessibility, an optional "withAccessibility" param can be set on all requests. The enum Keychain.Accessibilty provides an easy way to select the accessibility level desired:
-```
+``` swift
 Keychain.default.store(<KeychainStorable>, forKey: "exampleKey", withAccessibility: .afterFirstUnlock)
 ```
 
