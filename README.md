@@ -40,20 +40,17 @@ let uniqueServiceName = "customServiceName"
 let uniqueAccessGroup = "sharedAccessGroupName"
 let customKeychainInstance = Keychain(serviceName: uniqueServiceName, accessGroup: uniqueAccessGroup)
 ```
-The custom instance can then be used in place of the shared instance or static accessors:
 
+The custom instance can then be used in place of the provided instance:
 ```
 let saveSuccessful = customKeychainInstance.store("exampleValue", forKey: "exampleKey")
-
 let retrievedString = customKeychainInstance.retrieve(String.self, forKey: "exampleKey")
-
 let removeSuccessful = customKeychainInstance.removeObject(forKey: "exampleKey")
 ```
 
 ## Accessibility Options
 
 By default, all items saved to keychain can only be accessed when the device is unlocked. To change this accessibility, an optional "withAccessibility" param can be set on all requests. The enum Keychain.Accessibilty provides an easy way to select the accessibility level desired:
-
 ```
 Keychain.default.store(<KeychainStorable>, forKey: "exampleKey", withAccessibility: .afterFirstUnlock)
 ```
@@ -62,7 +59,6 @@ Keychain.default.store(<KeychainStorable>, forKey: "exampleKey", withAccessibili
 
 ### CocoaPods
 You can use [CocoaPods](http://cocoapods.org/) to install SwiftKeychainAccess by adding it to your `Podfile`:
-
 ``` ruby
 use_frameworks!
 platform :ios, '10.0'
@@ -72,11 +68,10 @@ target 'target_name' do
 end
 ```
 
-To use the keychain wrapper in your app, import SwiftKeychainWrapper into the file(s) where you want to use it.
-
+To use the keychain in your app, import Keychain into the file(s) where you want to use it.
 ```
 import Keychain
 ```
 
 ### Manually
-Download and drop ```Keychain.swift``` and ```KeychainStorable.swift``` into your project.
+Download and drop `Keychain.swift` and `KeychainStorable.swift` into your project.
