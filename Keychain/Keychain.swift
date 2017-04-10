@@ -76,16 +76,31 @@ open class Keychain {
         }
     }
 
-    /// Default `Keychain` instance
+    /// Default Keychain instance
     open static let `default` = Keychain(serviceName: Keychain.defaultServiceName)
     
-    // TODO: iCloud Keychain default instance
-    // open static let iCloud = Keychain(~~~, cloud = true)
+    /// Default iCloud Keychain instance
+    open static let iCloud = Keychain(serviceName: Keychain.defaultServiceName, synchronizable: true)
     
     /// Default serviceName for the default `Keychain` instance
     private static let defaultServiceName: String = {
         return Bundle.main.bundleIdentifier ?? "keychain_default_service_name"
     }()
+    
+    /**
+        Synchronizable indicates whether the Keychain in question is synchronized to other devices through iCloud. Any operation made with a Keychain where synchronizable is true will be synced accross all iCloud devices connected to the user's account.
+     
+        Updating or deleting items in a synchronizable Keychain will affect all copies of the item, not just the one on your local device. Be sure that it makes sense to use the same password on all devices before making a password synchronizable.
+    
+        - note:
+            Items stored or retrieved using a synchronizable Keychain may not also specify a Keychain.Accessibility value that is incompatible with syncing (namely, those whose names end with `ThisDeviceOnly`.)
+    
+            Items stored or retrieved by a synchronizable Keychain cannot be specified by reference.
+    
+            Do not use persistent references to synchronizable items. They cannot be moved between devices, and may not resolve if the item is modified on some other device.
+     */
+    open let synchronizable: Bool
+    
     
     /// ServiceName is used for the kSecAttrService property to uniquely identify this keychain accessor. If no service name is specified, Keychain will default to using the bundleIdentifier.
     open let serviceName: String
@@ -100,9 +115,10 @@ open class Keychain {
             - serviceName: The ServiceName for this instance. Used to uniquely identify all keys stored using this keychain wrapper instance.
             - accessGroup: Optional unique AccessGroup for this instance. Use a matching AccessGroup between applications to allow shared keychain access.
      */
-    public init(serviceName: String = Keychain.defaultServiceName, accessGroup: String? = nil) {
+    public init(serviceName: String = Keychain.defaultServiceName, accessGroup: String? = nil, synchronizable: Bool = false) {
         self.serviceName = serviceName
         self.accessGroup = accessGroup
+        self.synchronizable = synchronizable
     }
     
     /**
@@ -115,6 +131,10 @@ open class Keychain {
         - returns: True if a value exists for the key. False otherwise.
      */
     open func hasValue(forKey key: String, withAccessibility accessibility: Keychain.Accessibility? = nil) -> Bool {
+        if invalid(accessibility: accessibility) {
+            return false
+        }
+        
         if let _ = retrieve(Data.self, forKey: key, withAccessibility: accessibility) {
             return true
         } else {
@@ -138,6 +158,9 @@ open class Keychain {
         
         // Specify we want SecAttrAccessible returned
         query[kSecReturnAttributes] = kCFBooleanTrue
+        
+        // Ensure we are querying the correct Keychain, iCloud vs Local
+        query[kSecAttrSynchronizable] = synchronizable ? kCFBooleanTrue : kCFBooleanFalse
         
         // Search
         var result: AnyObject?
@@ -171,6 +194,10 @@ open class Keychain {
         - returns: The object associated with the key if it exists, nil otherwise.
      */
     open func retrieve<ValueType: KeychainStorable>(_ type: ValueType.Type, forKey key: String, withAccessibility accessibility: Keychain.Accessibility? = nil, asReference reference: Bool = false) -> ValueType? {
+        if invalid(accessibility: accessibility) {
+            return nil
+        }
+
         var query = setupQuery(forKey: key, withAccessibility: accessibility)
         
         // Limit search results to one
@@ -213,6 +240,10 @@ open class Keychain {
         - returns: True if the store was successful, false otherwise.
      */
     @discardableResult open func store<ValueType: KeychainStorable>(_ value: ValueType, forKey key: String, withAccessibility accessibility: Keychain.Accessibility = Keychain.Accessibility.default) -> Bool {
+        if invalid(accessibility: accessibility) {
+            return false
+        }
+
         guard let data = value.keychainRepresentation() else { return false }
         
         var query = setupQuery(forKey: key, withAccessibility: accessibility)
@@ -239,6 +270,10 @@ open class Keychain {
         - returns: True if successful, false otherwise.
      */
     @discardableResult open func removeObject(forKey key: String, withAccessibility accessibility: Keychain.Accessibility? = nil) -> Bool {
+        if invalid(accessibility: accessibility) {
+            return false
+        }
+
         let query = setupQuery(forKey: key, withAccessibility: accessibility)
         
         // Delete
@@ -267,6 +302,9 @@ open class Keychain {
         // Set the keychain access group if defined
         query[kSecAttrAccessGroup] = accessGroup
         
+        // Ensure we are querying the correct Keychain, iCloud vs Local
+        query[kSecAttrSynchronizable] = synchronizable ? kCFBooleanTrue : kCFBooleanFalse
+        
         switch SecItemDelete(query as CFDictionary) {
         case errSecSuccess:
             return true
@@ -294,6 +332,9 @@ open class Keychain {
         
         // Specify we want SecAttrAccessible returned
         query[kSecReturnAttributes] = kCFBooleanTrue
+        
+        // Ensure we are querying the correct Keychain, iCloud vs Local
+        query[kSecAttrSynchronizable] = synchronizable ? kCFBooleanTrue : kCFBooleanFalse
 
         // Search
         var result: AnyObject?
@@ -321,6 +362,17 @@ open class Keychain {
     
     
     // MARK: - Private
+    
+    private func invalid(accessibility: Keychain.Accessibility?) -> Bool {
+        if synchronizable &&
+            (accessibility == .afterFirstUnlockThisDeviceOnly ||
+            accessibility == .alwaysThisDeviceOnly ||
+            accessibility == .whenPasscodeSetThisDeviceOnly ||
+            accessibility == .whenUnlockedThisDeviceOnly) {
+            return true
+        }
+        return false
+    }
     
     /**
         Update existing data associated with a specified key name. The existing data will be overwritten by the new data.
@@ -362,8 +414,11 @@ open class Keychain {
         // Uniquely identify this keychain accessor
         query[kSecAttrService] = serviceName
         
-        // Only set accessibiilty if its passed in
+        // Only set accessibilty if its passed in
         query[kSecAttrAccessible] = accessibility?.rawValue
+        
+        // Ensure we are querying the correct Keychain, iCloud vs Local
+        query[kSecAttrSynchronizable] = synchronizable ? kCFBooleanTrue : kCFBooleanFalse
         
         // Set the keychain access group if defined
         query[kSecAttrAccessGroup] = accessGroup
