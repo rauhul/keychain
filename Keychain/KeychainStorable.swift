@@ -8,123 +8,80 @@
 
 import Foundation
 
-
-/// KeychainStorable defines a protocol a type must satisfy in order to be used in a Keychain operation; ie Stored, Retrieved, etc...
-public protocol KeychainStorable {
-    /// Converts a KeychainStorable Type into Data to be stored in the Keychain
-    func keychainRepresentation() -> Data?
-    
+/// DataConvertible defines a protocol a type must satisfy in order to be used in a Keychain operation; ie Stored, Retrieved, etc...
+public protocol DataConvertible {
     /// Converts Data retrieved from the Keychain into a KeychainStorable Type
-    init?(keychainRepresentation: Data)
+    init?(data: Data)
+
+    /// Converts a KeychainStorable Type into Data to be stored in the Keychain
+    var data: Data { get }
 }
 
 
-/// Extend Bool to be KeychainStorable
-extension Bool: KeychainStorable {
-    /// Converts a Bool into Data to be stored in the Keychain
-    public func keychainRepresentation() -> Data? {
-        return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
-    }
-    
-    /// Converts Data retrieved from the Keychain into a Bool
-    public init?(keychainRepresentation: Data) {
-        guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
-        self = number.boolValue
-    }
-}
+public protocol SimpleStruct { }
 
-
-/// Extend Int to be KeychainStorable
-extension Int: KeychainStorable {
-    /// Converts an Int into Data to be stored in the Keychain
-    public func keychainRepresentation() -> Data? {
-        return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
+extension DataConvertible where Self: SimpleStruct {
+    public init?(data: Data) {
+        guard data.count == MemoryLayout<Self>.size else { return nil }
+        self = data.withUnsafeBytes { $0.pointee }
     }
-    
-    /// Converts Data retrieved from the Keychain into an Int
-    public init?(keychainRepresentation: Data) {
-        guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
-        self = number.intValue
+
+    public var data: Data {
+        var value = self
+        return Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
     }
 }
 
+/// Extend Bool to be DataConvertible
+extension Bool: SimpleStruct, DataConvertible { }
 
-/// Extend Float to be KeychainStorable
-extension Float: KeychainStorable {
-    /// Converts a Float into Data to be stored in the Keychain
-    public func keychainRepresentation() -> Data? {
-        return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
-    }
-    
-    /// Converts Data retrieved from the Keychain into a Float
-    public init?(keychainRepresentation: Data) {
-        guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
-        self = number.floatValue
-    }
-}
+/// Extend Int to be DataConvertible
+extension Int: SimpleStruct, DataConvertible {}
 
+/// Extend Float to be DataConvertible
+extension Float: SimpleStruct, DataConvertible {}
 
-/// Extend Double to be KeychainStorable
-extension Double: KeychainStorable {
-    /// Converts a Double into Data to be stored in the Keychain
-    public func keychainRepresentation() -> Data? {
-        return NSKeyedArchiver.archivedData(withRootObject: NSNumber(value: self))
+/// Extend Double to be DataConvertible
+extension Double: SimpleStruct, DataConvertible { }
+
+/// Extend String to be DataConvertible
+extension String: DataConvertible {
+    public init?(data: Data) {
+        self.init(data: data, encoding: .utf8)
     }
-    
-    /// Converts Data retrieved from the Keychain into a Double
-    public init?(keychainRepresentation: Data) {
-        guard let number = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSNumber else { return nil }
-        self = number.doubleValue
+
+    public var data: Data {
+        return data(using: .utf8) ?? Data()
     }
 }
 
+/// Extend Data to be DataConvertible
+extension Data: DataConvertible {
+    public init?(data: Data) {
+        self = data
+    }
 
-/// Extend Data to be KeychainStorable
-extension Data: KeychainStorable {
-    /// Provides an interface for Data to be stored in the Keychain
-    public func keychainRepresentation() -> Data? {
+    public var data: Data {
         return self
-    }
-    
-    /// Provides an interface for Data to be created by the Keychain
-    public init?(keychainRepresentation: Data) {
-        self = keychainRepresentation
-    }
-}
-
-
-/// Extend String to be KeychainStorable
-extension String: KeychainStorable {
-    /// Converts a String into Data to be stored in the Keychain
-    public func keychainRepresentation() -> Data? {
-        return data(using: .utf8)
-    }
-    
-    /// Converts Data retrieved from the Keychain into a String
-    public init?(keychainRepresentation: Data) {
-        guard let string = String(data: keychainRepresentation, encoding: String.Encoding.utf8) else {
-            return nil
-        }
-        self = string
     }
 }
 
 
 // FIXME: Make NSCoding KeychainStorable
-/**
 /// Extend NSCoding to be KeychainStorable
-extension KeychainStorable where Self: NSCoding {
-    /// Converts an object conforming to NSCoding into Data to be stored in the Keychain
-    func keychainRepresentation() -> Data? {
-        return NSKeyedArchiver.archivedData(withRootObject: self)
-    }
-    
-    /// Converts Data retrieved from the Keychain into a NSCoding Type
-    init?(keychainRepresentation: Data) {
-        guard let object = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSCoding else {
-            return nil
-        }
-        self = object
-    }
-}
- */
+//extension KeychainStorable where Self: NSCoding {
+//    /// Converts an object conforming to NSCoding into Data to be stored in the Keychain
+//    func keychainRepresentation() -> Data? {
+//        return NSKeyedArchiver.archivedData(withRootObject: self)
+//    }
+//
+//    /// Converts Data retrieved from the Keychain into a NSCoding Type
+//    convenience init?(keychainRepresentation: Data) {
+//
+//        guard let object = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSCoding else {
+//            return nil
+//        }
+//        self = object
+//    }
+//}
+//

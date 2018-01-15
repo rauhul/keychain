@@ -83,7 +83,7 @@ open class Keychain {
     open static let iCloud = Keychain(serviceName: Keychain.defaultServiceName, synchronizable: true)
     
     /// Default serviceName for the default `Keychain` instance
-    private static let defaultServiceName: String = {
+    public static let defaultServiceName: String = {
         return Bundle.main.bundleIdentifier ?? "keychain_default_service_name"
     }()
     
@@ -183,17 +183,17 @@ open class Keychain {
     }
     
     /**
-        Retrieve an KeychainStorable object or persistent data reference for a specified key.
+        Retrieve an DataConvertible object or persistent data reference for a specified key.
      
         - parameters:
-            - type: the return type of the desired KeychainStorable object
+            - type: the return type of the desired DataConvertible object
             - forKey: The key to lookup data for.
             - withAccessibility: Optional accessibility to use when retrieving the keychain item.
             - asReference: Optional flag for returning as a persistent data reference
      
         - returns: The object associated with the key if it exists, nil otherwise.
      */
-    open func retrieve<ValueType: KeychainStorable>(_ type: ValueType.Type, forKey key: String, withAccessibility accessibility: Keychain.Accessibility? = nil, asReference reference: Bool = false) -> ValueType? {
+    open func retrieve<ValueType: DataConvertible>(_ type: ValueType.Type, forKey key: String, withAccessibility accessibility: Keychain.Accessibility? = nil, asReference reference: Bool = false) -> ValueType? {
         if invalid(accessibility: accessibility) {
             return nil
         }
@@ -223,38 +223,35 @@ open class Keychain {
                 fatalError("Failure to convert object returned as kSecReturnData to Data")
             }
             
-            return ValueType(keychainRepresentation: data)
+            return ValueType(data: data)
         default:
             return nil
         }
     }
     
     /**
-        Store a KeychainStorable object to the keychain with a specified key. Any data previously saved with this key be overwritten with the new value.
+        Store a DataConvertible object to the keychain with a specified key. Any data previously saved with this key be overwritten with the new value.
      
         - parameters:
-            - value: The KeychainStorable object to store
+            - value: The DataConvertible object to store
             - forKey: The key to store the object under
             - withAccessibility: Optional accessibility to use when storing the keychain item
      
         - returns: True if the store was successful, false otherwise.
      */
-    @discardableResult open func store<ValueType: KeychainStorable>(_ value: ValueType, forKey key: String, withAccessibility accessibility: Keychain.Accessibility = Keychain.Accessibility.default) -> Bool {
+    @discardableResult open func store<ValueType: DataConvertible>(_ value: ValueType, forKey key: String, withAccessibility accessibility: Keychain.Accessibility = Keychain.Accessibility.default) -> Bool {
         if invalid(accessibility: accessibility) {
             return false
         }
 
-        guard let data = value.keychainRepresentation() else { return false }
-        
         var query = setupQuery(forKey: key, withAccessibility: accessibility)
-        
-        query[kSecValueData] = data
+        query[kSecValueData] = value.data
 
         switch SecItemAdd(query as CFDictionary, nil) {
         case errSecSuccess:
             return true
         case errSecDuplicateItem:
-            return update(data, forKey: key, withAccessibility: accessibility)
+            return update(value.data, forKey: key, withAccessibility: accessibility)
         default:
             return false
         }

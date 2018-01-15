@@ -48,7 +48,7 @@ class KeychainDefaultWrapperTests: XCTestCase {
         XCTAssertFalse(Keychain.default.hasValue(forKey: testKey), "Keychain should not have a value for the test key")
         
         Keychain.default.store(testString, forKey: testKey)
-        
+
         XCTAssertTrue(Keychain.default.hasValue(forKey: testKey), "Keychain should have a value for the test key after it is store")
     }
     
