@@ -3,7 +3,7 @@
 //  Keychain
 //
 //  Created by Rauhul Varma on 3/3/17.
-//  Copyright © 2017 rvarma. All rights reserved.
+//  Copyright © 2020 rauhul. All rights reserved.
 //
 
 import Foundation
@@ -17,7 +17,7 @@ public protocol DataConvertible {
     var data: Data { get }
 }
 
-
+/// SimpleStruct is a marker protocol used to provide DataConvertible conformance to any simple value type.
 public protocol SimpleStruct { }
 
 extension DataConvertible where Self: SimpleStruct {
@@ -65,23 +65,3 @@ extension Data: DataConvertible {
         return self
     }
 }
-
-
-// FIXME: Make NSCoding KeychainStorable
-/// Extend NSCoding to be KeychainStorable
-//extension KeychainStorable where Self: NSCoding {
-//    /// Converts an object conforming to NSCoding into Data to be stored in the Keychain
-//    func keychainRepresentation() -> Data? {
-//        return NSKeyedArchiver.archivedData(withRootObject: self)
-//    }
-//
-//    /// Converts Data retrieved from the Keychain into a NSCoding Type
-//    convenience init?(keychainRepresentation: Data) {
-//
-//        guard let object = NSKeyedUnarchiver.unarchiveObject(with: keychainRepresentation) as? NSCoding else {
-//            return nil
-//        }
-//        self = object
-//    }
-//}
-//

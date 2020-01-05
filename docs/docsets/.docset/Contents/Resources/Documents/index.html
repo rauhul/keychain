@@ -41,7 +41,7 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Extensions/Bool.html">Bool</a>
+                <a href="Extensions.html#/s:Sb">Bool</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/CFString.html">CFString</a>
@@ -50,13 +50,13 @@
                 <a href="Extensions/Data.html">Data</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Double.html">Double</a>
+                <a href="Extensions.html#/s:Sd">Double</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Float.html">Float</a>
+                <a href="Extensions.html#/s:Sf">Float</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Int.html">Int</a>
+                <a href="Extensions.html#/s:Si">Int</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/String.html">String</a>
@@ -67,7 +67,7 @@
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:F8Keychainoi2eeFTCSo8CFStringS0__Sb">==(_:_:)</a>
+                <a href="Functions.html#/s:8Keychain2eeoiySbSo11CFStringRefa_ADtF">==(_:_:)</a>
               </li>
             </ul>
           </li>
@@ -75,7 +75,10 @@
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Protocols/KeychainStorable.html">KeychainStorable</a>
+                <a href="Protocols/DataConvertible.html">DataConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols.html#/s:8Keychain12SimpleStructP">SimpleStruct</a>
               </li>
             </ul>
           </li>
@@ -85,13 +88,90 @@
         <section>
           <section class="section">
             
-            <a href='#authors' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='authors'>Authors</h3>
+            <h1 id='keychain' class='heading'>Keychain</h1>
+
+<p><a href="https://github.com/apple/swift"><img src="https://img.shields.io/badge/swift-v5.0-orange.svg" alt="Swift Version"></a>
+<a href="https://rauhul.me/keychain/"><img src="https://raw.githubusercontent.com/rauhul/keychain/master/docs/badge.svg?sanitize=true" alt="Documentation Converage"></a>
+<a href="https://github.com/rauhul/keychain/releases"><img src="https://img.shields.io/badge/release-v0.2.0-ff69b4.svg" alt="Release Version"></a>
+<a href="https://raw.githubusercontent.com/rauhul/keychain/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub License"></a></p>
+
+<p>A simple inteferace for using the iOS Keychain, written in Swift. Heavily based on the work done by Jason Rendel in <a href="https://github.com/jrendel/SwiftKeychainWrapper">SwiftKeychainWrapper</a>.</p>
+
+<p>Provides singleton instance <code><a href="Classes/Keychain.html#/s:8KeychainAAC7defaultABvpZ">Keychain.default</a></code> that is setup to work for most needs.</p>
+
+<p>If you need to customize the keychain access to use a custom identifier or access group, you can create your own instance instead of using the provided singleton.</p>
+
+<p>By default, the Keychain saves data as a Generic Password type in the iOS Keychain. It saves items such that they can only be accessed when the app is unlocked and open. If you are not familiar with the iOS Keychain usage, this provides a safe default for using the keycain.</p>
+
+<p>Users that want to deviate from this default implementation can specifiy keychain accessibility for each request (store, retrieve, etc&hellip;) to a Keychain instance.</p>
+<h2 id='requirements' class='heading'>Requirements</h2>
+
+<ul>
+<li>Swift 5.0+</li>
+</ul>
+<h3 id='notes' class='heading'>Notes</h3>
+
+<p>Keychain 0.1.2 is the last version that supports cocoapods
+Keychain 0.1.2 is the last release with Swift 4.2 support</p>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+
+<p>The <a href="https://swift.org/package-manager/">Swift Package Manager</a> is a tool for automating the distribution of Swift code and is integrated into the <code>swift</code> compiler.</p>
+
+<p>Once you have your Swift package set up, adding Keychain as a dependency is as easy as adding it to the <code>dependencies</code> value of your <code>Package.swift</code>.</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/rauhul/keychain.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"0.2.0"</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre>
+
+<p>To use the keychain in your app, import Keychain into the file(s) where you want to use it.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Keychain</span>
+</code></pre>
+<h2 id='general-usage' class='heading'>General Usage</h2>
+
+<p>Store a string value to keychain:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">saveSuccessful</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="s">"exampleValue"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"exampleKey"</span><span class="p">)</span>
+</code></pre>
+
+<p>Retrieve a string value from keychain:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">retrievedString</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">retrieve</span><span class="p">(</span><span class="kt">String</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"exampleKey"</span><span class="p">)</span>
+</code></pre>
+
+<p>Delete a string value from keychain:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">removeSuccessful</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">removeObject</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"exampleKey"</span><span class="p">)</span>
+</code></pre>
+<h2 id='custom-instance' class='heading'>Custom Instance</h2>
+
+<p>When the Keychain Wrapper is used, all keys are linked to a common identifier for your app, called the service name. By default this uses your main bundle identifier. However, you may also change it, or store multiple items to the keycahin under different identifiers.</p>
+
+<p>To share keychain items between your applications, you may specify an access group and use that same access group in each application.</p>
+
+<p>To set a custom service name identifier or access group, you may create your own keychain instance as follows:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">uniqueServiceName</span> <span class="o">=</span> <span class="s">"customServiceName"</span>
+
+<span class="k">let</span> <span class="nv">uniqueAccessGroup</span> <span class="o">=</span> <span class="s">"sharedAccessGroupName"</span>
+
+<span class="k">let</span> <span class="nv">customKeychainInstance</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="p">(</span><span class="nv">serviceName</span><span class="p">:</span> <span class="n">uniqueServiceName</span><span class="p">,</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="n">uniqueAccessGroup</span><span class="p">)</span>
+</code></pre>
+
+<p>The custom instance can then be used in place of the provided instance:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">saveSuccessful</span> <span class="o">=</span> <span class="n">customKeychainInstance</span><span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="s">"exampleValue"</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"exampleKey"</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">retrievedString</span> <span class="o">=</span> <span class="n">customKeychainInstance</span><span class="o">.</span><span class="nf">retrieve</span><span class="p">(</span><span class="kt">String</span><span class="o">.</span><span class="k">self</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"exampleKey"</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">removeSuccessful</span> <span class="o">=</span> <span class="n">customKeychainInstance</span><span class="o">.</span><span class="nf">removeObject</span><span class="p">(</span><span class="nv">forKey</span><span class="p">:</span> <span class="s">"exampleKey"</span><span class="p">)</span>
+</code></pre>
+<h2 id='accessibility-options' class='heading'>Accessibility Options</h2>
+
+<p>By default, all items saved to keychain can only be accessed when the device is unlocked. To change this accessibility, an optional &ldquo;withAccessibility&rdquo; param can be set on all requests. The enum Keychain.Accessibilty provides an easy way to select the accessibility level desired:</p>
+<pre class="highlight swift"><code><span class="kt">Keychain</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="nf">store</span><span class="p">(</span><span class="o">&lt;</span><span class="kt">KeychainStorable</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">forKey</span><span class="p">:</span> <span class="s">"exampleKey"</span><span class="p">,</span> <span class="nv">withAccessibility</span><span class="p">:</span> <span class="o">.</span><span class="n">afterFirstUnlock</span><span class="p">)</span>
+</code></pre>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2017-04-09)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/rauhul/keychain" target="_blank" rel="external">rauhul</a>. All rights reserved. (Last updated: 2020-01-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

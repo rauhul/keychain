@@ -14,7 +14,8 @@
     <a title="Keychain Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Keychain Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Keychain 0.2.0 Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/rauhul/keychain"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -42,7 +43,7 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Bool.html">Bool</a>
+                <a href="../Extensions.html#/s:Sb">Bool</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/CFString.html">CFString</a>
@@ -51,13 +52,13 @@
                 <a href="../Extensions/Data.html">Data</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Double.html">Double</a>
+                <a href="../Extensions.html#/s:Sd">Double</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Float.html">Float</a>
+                <a href="../Extensions.html#/s:Sf">Float</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Int.html">Int</a>
+                <a href="../Extensions.html#/s:Si">Int</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
@@ -68,7 +69,7 @@
             <a href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:F8Keychainoi2eeFTCSo8CFStringS0__Sb">==(_:_:)</a>
+                <a href="../Functions.html#/s:8Keychain2eeoiySbSo11CFStringRefa_ADtF">==(_:_:)</a>
               </li>
             </ul>
           </li>
@@ -76,7 +77,10 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/KeychainStorable.html">KeychainStorable</a>
+                <a href="../Protocols/DataConvertible.html">DataConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:8Keychain12SimpleStructP">SimpleStruct</a>
               </li>
             </ul>
           </li>
@@ -88,7 +92,7 @@
             <h1>Keychain</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">Keychain</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">Keychain</span></code></pre>
 
                 </div>
               </div>
@@ -101,9 +105,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:OC8Keychain8Keychain13Accessibility"></a>
+                    <a name="/s:8KeychainAAC13AccessibilityO"></a>
                     <a name="//apple_ref/swift/Enum/Accessibility" class="dashAnchor"></a>
-                    <a class="token" href="#/s:OC8Keychain8Keychain13Accessibility">Accessibility</a>
+                    <a class="token" href="#/s:8KeychainAAC13AccessibilityO">Accessibility</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -119,7 +123,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Accessibility</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Accessibility</span></code></pre>
 
                         </div>
                       </div>
@@ -129,9 +133,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvC8Keychain8Keychain7defaultS0_"></a>
+                    <a name="/s:8KeychainAAC7defaultABvpZ"></a>
                     <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvC8Keychain8Keychain7defaultS0_">default</a>
+                    <a class="token" href="#/s:8KeychainAAC7defaultABvpZ">default</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -146,7 +150,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">static</span> <span class="kd">let</span> <span class="err">`</span><span class="k">default</span><span class="err">`</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="p">(</span><span class="nv">serviceName</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="n">defaultServiceName</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">let</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="kt">Keychain</span></code></pre>
 
                         </div>
                       </div>
@@ -156,9 +160,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZvC8Keychain8Keychain6iCloudS0_"></a>
+                    <a name="/s:8KeychainAAC6iCloudABvpZ"></a>
                     <a name="//apple_ref/swift/Variable/iCloud" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZvC8Keychain8Keychain6iCloudS0_">iCloud</a>
+                    <a class="token" href="#/s:8KeychainAAC6iCloudABvpZ">iCloud</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -173,7 +177,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">iCloud</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="p">(</span><span class="nv">serviceName</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="n">defaultServiceName</span><span class="p">,</span> <span class="nv">synchronizable</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">iCloud</span><span class="p">:</span> <span class="kt">Keychain</span></code></pre>
 
                         </div>
                       </div>
@@ -183,9 +187,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC8Keychain8Keychain14synchronizableSb"></a>
+                    <a name="/s:8KeychainAAC18defaultServiceNameSSvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/defaultServiceName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8KeychainAAC18defaultServiceNameSSvpZ">defaultServiceName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Default serviceName for the default <code>Keychain</code> instance</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">defaultServiceName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:8KeychainAAC14synchronizableSbvp"></a>
                     <a name="//apple_ref/swift/Property/synchronizable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC8Keychain8Keychain14synchronizableSb">synchronizable</a>
+                    <a class="token" href="#/s:8KeychainAAC14synchronizableSbvp">synchronizable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -196,7 +227,6 @@
                         <p>Synchronizable indicates whether the Keychain in question is synchronized to other devices through iCloud. Any operation made with a Keychain where synchronizable is true will be synced accross all iCloud devices connected to the user&rsquo;s account.</p>
 
 <p>Updating or deleting items in a synchronizable Keychain will affect all copies of the item, not just the one on your local device. Be sure that it makes sense to use the same password on all devices before making a password synchronizable.</p>
-
 <div class="aside aside-note">
     <p class="aside-title">Note</p>
     <p>Items stored or retrieved using a synchronizable Keychain may not also specify a Keychain.Accessibility value that is incompatible with syncing (namely, those whose names end with <code>ThisDeviceOnly</code>.)</p>
@@ -212,7 +242,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">synchronizable</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">synchronizable</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -222,9 +252,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC8Keychain8Keychain11serviceNameSS"></a>
+                    <a name="/s:8KeychainAAC11serviceNameSSvp"></a>
                     <a name="//apple_ref/swift/Property/serviceName" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC8Keychain8Keychain11serviceNameSS">serviceName</a>
+                    <a class="token" href="#/s:8KeychainAAC11serviceNameSSvp">serviceName</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,7 +269,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -249,9 +279,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC8Keychain8Keychain11accessGroupGSqSS_"></a>
+                    <a name="/s:8KeychainAAC11accessGroupSSSgvp"></a>
                     <a name="//apple_ref/swift/Property/accessGroup" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC8Keychain8Keychain11accessGroupGSqSS_">accessGroup</a>
+                    <a class="token" href="#/s:8KeychainAAC11accessGroupSSSgvp">accessGroup</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -266,7 +296,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="k">let</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -276,9 +306,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8KeychaincFT11serviceNameSS11accessGroupGSqSS_14synchronizableSb_S0_"></a>
+                    <a name="/s:8KeychainAAC11serviceName11accessGroup14synchronizableABSS_SSSgSbtcfc"></a>
                     <a name="//apple_ref/swift/Method/init(serviceName:accessGroup:synchronizable:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8KeychaincFT11serviceNameSS11accessGroupGSqSS_14synchronizableSb_S0_">init(serviceName:accessGroup:synchronizable:)</a>
+                    <a class="token" href="#/s:8KeychainAAC11serviceName11accessGroup14synchronizableABSS_SSSgSbtcfc">init(serviceName:accessGroup:synchronizable:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -293,7 +323,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="o">.</span><span class="n">defaultServiceName</span><span class="p">,</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">synchronizable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">serviceName</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="kt">Keychain</span><span class="o">.</span><span class="n"><a href="../Classes/Keychain.html#/s:8KeychainAAC18defaultServiceNameSSvpZ">defaultServiceName</a></span><span class="p">,</span> <span class="nv">accessGroup</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">synchronizable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -310,7 +340,6 @@
                               <td>
                                 <div>
                                   <p>The ServiceName for this instance. Used to uniquely identify all keys stored using this keychain wrapper instance.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -323,7 +352,6 @@
                               <td>
                                 <div>
                                   <p>Optional unique AccessGroup for this instance. Use a matching AccessGroup between applications to allow shared keychain access.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -336,9 +364,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8Keychain8hasValueFT6forKeySS17withAccessibilityGSqOS0_13Accessibility__Sb"></a>
+                    <a name="/s:8KeychainAAC8hasValue6forKey17withAccessibilitySbSS_AB0G0OSgtF"></a>
                     <a name="//apple_ref/swift/Method/hasValue(forKey:withAccessibility:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8Keychain8hasValueFT6forKeySS17withAccessibilityGSqOS0_13Accessibility__Sb">hasValue(forKey:withAccessibility:)</a>
+                    <a class="token" href="#/s:8KeychainAAC8hasValue6forKey17withAccessibilitySbSS_AB0G0OSgtF">hasValue(forKey:withAccessibility:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -353,7 +381,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">hasValue</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">hasValue</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -370,7 +398,6 @@
                               <td>
                                 <div>
                                   <p>The key whose value should be check</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -383,7 +410,6 @@
                               <td>
                                 <div>
                                   <p>Optional accessibility to use when retrieving the keychain item</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -393,7 +419,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>True if a value exists for the key. False otherwise.</p>
-
                       </div>
                     </section>
                   </div>
@@ -401,9 +426,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8Keychain13accessibilityFT5ofKeySS_GSqOS0_13Accessibility_"></a>
+                    <a name="/s:8KeychainAAC13accessibility5ofKeyAB13AccessibilityOSgSS_tF"></a>
                     <a name="//apple_ref/swift/Method/accessibility(ofKey:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8Keychain13accessibilityFT5ofKeySS_GSqOS0_13Accessibility_">accessibility(ofKey:)</a>
+                    <a class="token" href="#/s:8KeychainAAC13accessibility5ofKeyAB13AccessibilityOSgSS_tF">accessibility(ofKey:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -418,7 +443,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">accessibility</span><span class="p">(</span><span class="n">ofKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">accessibility</span><span class="p">(</span><span class="n">ofKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -435,7 +460,6 @@
                               <td>
                                 <div>
                                   <p>The key whose Accessibility level should be checked</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -445,7 +469,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>Returns the Accessibility level of a key if it exists. <code>nil</code> otherwise.</p>
-
                       </div>
                     </section>
                   </div>
@@ -453,9 +476,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8Keychain8retrieveuRxS_16KeychainStorablerFTMx6forKeySS17withAccessibilityGSqOS0_13Accessibility_11asReferenceSb_GSqx_"></a>
+                    <a name="/s:8KeychainAAC8retrieve_6forKey17withAccessibility11asReferencexSgxm_SSAB0F0OSgSbtAA15DataConvertibleRzlF"></a>
                     <a name="//apple_ref/swift/Method/retrieve(_:forKey:withAccessibility:asReference:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8Keychain8retrieveuRxS_16KeychainStorablerFTMx6forKeySS17withAccessibilityGSqOS0_13Accessibility_11asReferenceSb_GSqx_">retrieve(_:forKey:withAccessibility:asReference:)</a>
+                    <a class="token" href="#/s:8KeychainAAC8retrieve_6forKey17withAccessibility11asReferencexSgxm_SSAB0F0OSgSbtAA15DataConvertibleRzlF">retrieve(_:forKey:withAccessibility:asReference:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -463,14 +486,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Retrieve an KeychainStorable object or persistent data reference for a specified key.</p>
+                        <p>Retrieve an DataConvertible object or persistent data reference for a specified key.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="n">retrieve</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeychainStorable.html">KeychainStorable</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">ValueType</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">asReference</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ValueType</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="n">retrieve</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">type</span><span class="p">:</span> <span class="kt">ValueType</span><span class="o">.</span><span class="k">Type</span><span class="p">,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span> <span class="n">asReference</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ValueType</span><span class="p">?</span> <span class="k">where</span> <span class="kt">ValueType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/DataConvertible.html">DataConvertible</a></span></code></pre>
 
                         </div>
                       </div>
@@ -486,8 +509,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the return type of the desired KeychainStorable object</p>
-
+                                  <p>the return type of the desired DataConvertible object</p>
                                 </div>
                               </td>
                             </tr>
@@ -500,7 +522,6 @@
                               <td>
                                 <div>
                                   <p>The key to lookup data for.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -513,7 +534,6 @@
                               <td>
                                 <div>
                                   <p>Optional accessibility to use when retrieving the keychain item.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -526,7 +546,6 @@
                               <td>
                                 <div>
                                   <p>Optional flag for returning as a persistent data reference</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -536,7 +555,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The object associated with the key if it exists, nil otherwise.</p>
-
                       </div>
                     </section>
                   </div>
@@ -544,9 +562,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8Keychain5storeuRxS_16KeychainStorablerFTx6forKeySS17withAccessibilityOS0_13Accessibility_Sb"></a>
+                    <a name="/s:8KeychainAAC5store_6forKey17withAccessibilitySbx_SSAB0F0OtAA15DataConvertibleRzlF"></a>
                     <a name="//apple_ref/swift/Method/store(_:forKey:withAccessibility:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8Keychain5storeuRxS_16KeychainStorablerFTx6forKeySS17withAccessibilityOS0_13Accessibility_Sb">store(_:forKey:withAccessibility:)</a>
+                    <a class="token" href="#/s:8KeychainAAC5store_6forKey17withAccessibilitySbx_SSAB0F0OtAA15DataConvertibleRzlF">store(_:forKey:withAccessibility:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -554,14 +572,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Store a KeychainStorable object to the keychain with a specified key. Any data previously saved with this key be overwritten with the new value.</p>
+                        <p>Store a DataConvertible object to the keychain with a specified key. Any data previously saved with this key be overwritten with the new value.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="n">open</span> <span class="kd">func</span> <span class="n">store</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="p">:</span> <span class="kt"><a href="../Protocols/KeychainStorable.html">KeychainStorable</a></span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">ValueType</span><span class="p">,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span> <span class="o">=</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="o">.</span><span class="k">default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="n">store</span><span class="o">&lt;</span><span class="kt">ValueType</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">ValueType</span><span class="p">,</span> <span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span> <span class="o">=</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="o">.</span><span class="k">default</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="k">where</span> <span class="kt">ValueType</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/DataConvertible.html">DataConvertible</a></span></code></pre>
 
                         </div>
                       </div>
@@ -577,8 +596,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>The KeychainStorable object to store</p>
-
+                                  <p>The DataConvertible object to store</p>
                                 </div>
                               </td>
                             </tr>
@@ -591,7 +609,6 @@
                               <td>
                                 <div>
                                   <p>The key to store the object under</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -604,7 +621,6 @@
                               <td>
                                 <div>
                                   <p>Optional accessibility to use when storing the keychain item</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -614,7 +630,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>True if the store was successful, false otherwise.</p>
-
                       </div>
                     </section>
                   </div>
@@ -622,9 +637,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8Keychain12removeObjectFT6forKeySS17withAccessibilityGSqOS0_13Accessibility__Sb"></a>
+                    <a name="/s:8KeychainAAC12removeObject6forKey17withAccessibilitySbSS_AB0G0OSgtF"></a>
                     <a name="//apple_ref/swift/Method/removeObject(forKey:withAccessibility:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8Keychain12removeObjectFT6forKeySS17withAccessibilityGSqOS0_13Accessibility__Sb">removeObject(forKey:withAccessibility:)</a>
+                    <a class="token" href="#/s:8KeychainAAC12removeObject6forKey17withAccessibilitySbSS_AB0G0OSgtF">removeObject(forKey:withAccessibility:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -639,7 +654,8 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">@discardableResult</span> <span class="n">open</span> <span class="kd">func</span> <span class="nf">removeObject</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">open</span> <span class="kd">func</span> <span class="nf">removeObject</span><span class="p">(</span><span class="n">forKey</span> <span class="nv">key</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">withAccessibility</span> <span class="nv">accessibility</span><span class="p">:</span> <span class="kt">Keychain</span><span class="o">.</span><span class="kt"><a href="../Classes/Keychain/Accessibility.html">Accessibility</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -656,7 +672,6 @@
                               <td>
                                 <div>
                                   <p>The key value to remove data for</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -669,7 +684,6 @@
                               <td>
                                 <div>
                                   <p>Optional accessibility level to use when looking up the keychain item</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -679,7 +693,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>True if successful, false otherwise.</p>
-
                       </div>
                     </section>
                   </div>
@@ -687,9 +700,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8Keychain5purgeFT_Sb"></a>
+                    <a name="/s:8KeychainAAC5purgeSbyF"></a>
                     <a name="//apple_ref/swift/Method/purge()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8Keychain5purgeFT_Sb">purge()</a>
+                    <a class="token" href="#/s:8KeychainAAC5purgeSbyF">purge()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -704,14 +717,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">purge</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">purge</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
                         <p>True if successful, false otherwise</p>
-
                       </div>
                     </section>
                   </div>
@@ -719,9 +731,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC8Keychain8Keychain7allKeysFT_GVs3SetSS_"></a>
+                    <a name="/s:8KeychainAAC7allKeysShySSGyF"></a>
                     <a name="//apple_ref/swift/Method/allKeys()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC8Keychain8Keychain7allKeysFT_GVs3SetSS_">allKeys()</a>
+                    <a class="token" href="#/s:8KeychainAAC7allKeysShySSGyF">allKeys()</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -736,7 +748,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">func</span> <span class="nf">allKeys</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">allKeys</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -748,8 +760,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/rauhul/Keychain" target="_blank" rel="external">rauhul</a>. All rights reserved. (Last updated: 2017-04-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://rauhul.me" target="_blank" rel="external">rauhul</a>. All rights reserved. (Last updated: 2020-01-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

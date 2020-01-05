@@ -3,7 +3,7 @@
 //  Keychain
 //
 //  Created by Rauhul Varma on 3/4/17.
-//  Copyright © 2017 rvarma. All rights reserved.
+//  Copyright © 2020 rauhul. All rights reserved.
 //
 
 import Foundation
@@ -77,10 +77,10 @@ open class Keychain {
     }
 
     /// Default Keychain instance
-    open static let `default` = Keychain(serviceName: Keychain.defaultServiceName)
+    public static let `default` = Keychain(serviceName: Keychain.defaultServiceName)
     
     /// Default iCloud Keychain instance
-    open static let iCloud = Keychain(serviceName: Keychain.defaultServiceName, synchronizable: true)
+    public static let iCloud = Keychain(serviceName: Keychain.defaultServiceName, synchronizable: true)
     
     /// Default serviceName for the default `Keychain` instance
     public static let defaultServiceName: String = {
@@ -99,14 +99,14 @@ open class Keychain {
     
             Do not use persistent references to synchronizable items. They cannot be moved between devices, and may not resolve if the item is modified on some other device.
      */
-    open let synchronizable: Bool
+    public let synchronizable: Bool
     
     
     /// ServiceName is used for the kSecAttrService property to uniquely identify this keychain accessor. If no service name is specified, Keychain will default to using the bundleIdentifier.
-    open let serviceName: String
+    public let serviceName: String
     
     /// AccessGroup is used for the kSecAttrAccessGroup property to identify which Keychain Access Group this entry belongs to. This allows you to use the Keychain with shared keychain access between different applications.
-    open let accessGroup: String?
+    public let accessGroup: String?
     
     /**
         Create a new Keychain instance with a custom Service Name and optional custom access group.

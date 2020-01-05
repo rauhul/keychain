@@ -14,7 +14,8 @@
     <a title="String Extension Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Keychain Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Keychain 0.2.0 Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/rauhul/keychain"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -42,7 +43,7 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/Bool.html">Bool</a>
+                <a href="../Extensions.html#/s:Sb">Bool</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/CFString.html">CFString</a>
@@ -51,13 +52,13 @@
                 <a href="../Extensions/Data.html">Data</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Double.html">Double</a>
+                <a href="../Extensions.html#/s:Sd">Double</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Float.html">Float</a>
+                <a href="../Extensions.html#/s:Sf">Float</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Int.html">Int</a>
+                <a href="../Extensions.html#/s:Si">Int</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/String.html">String</a>
@@ -68,7 +69,7 @@
             <a href="../Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Functions.html#/s:F8Keychainoi2eeFTCSo8CFStringS0__Sb">==(_:_:)</a>
+                <a href="../Functions.html#/s:8Keychain2eeoiySbSo11CFStringRefa_ADtF">==(_:_:)</a>
               </li>
             </ul>
           </li>
@@ -76,7 +77,10 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Protocols/KeychainStorable.html">KeychainStorable</a>
+                <a href="../Protocols/DataConvertible.html">DataConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:8Keychain12SimpleStructP">SimpleStruct</a>
               </li>
             </ul>
           </li>
@@ -88,11 +92,12 @@
             <h1>String</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">struct</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">String</span><span class="p">:</span> <span class="kt"><a href="../Protocols/DataConvertible.html">DataConvertible</a></span></code></pre>
 
                 </div>
               </div>
-            
+            <p>Extend String to be DataConvertible</p>
+
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -100,9 +105,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FE8KeychainSS22keychainRepresentationFT_GSqV10Foundation4Data_"></a>
-                    <a name="//apple_ref/swift/Method/keychainRepresentation()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE8KeychainSS22keychainRepresentationFT_GSqV10Foundation4Data_">keychainRepresentation()</a>
+                    <a name="/s:8Keychain15DataConvertibleP4dataxSg10Foundation0B0V_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(data:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Keychain15DataConvertibleP4dataxSg10Foundation0B0V_tcfc">init(data:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -110,14 +115,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Converts a String into Data to be stored in the Keychain</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">keychainRepresentation</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Data</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -127,9 +131,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FE8KeychainSScFT22keychainRepresentationV10Foundation4Data_GSqSS_"></a>
-                    <a name="//apple_ref/swift/Method/init(keychainRepresentation:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FE8KeychainSScFT22keychainRepresentationV10Foundation4Data_GSqSS_">init(keychainRepresentation:)</a>
+                    <a name="/s:8Keychain15DataConvertibleP4data10Foundation0B0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/data" class="dashAnchor"></a>
+                    <a class="token" href="#/s:8Keychain15DataConvertibleP4data10Foundation0B0Vvp">data</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -137,14 +141,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Converts Data retrieved from the Keychain into a String</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">keychainRepresentation</span><span class="p">:</span> <span class="kt">Data</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -156,8 +159,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/rauhul/Keychain" target="_blank" rel="external">rauhul</a>. All rights reserved. (Last updated: 2017-04-10)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://rauhul.me" target="_blank" rel="external">rauhul</a>. All rights reserved. (Last updated: 2020-01-04)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.0</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -1,4 +1,8 @@
 # Keychain
+[![Swift Version](https://img.shields.io/badge/swift-v5.0-orange.svg)](https://github.com/apple/swift)
+[![Documentation Converage](https://raw.githubusercontent.com/rauhul/keychain/master/docs/badge.svg?sanitize=true)](https://rauhul.me/keychain/)
+[![Release Version](https://img.shields.io/badge/release-v0.2.0-ff69b4.svg)](https://github.com/rauhul/keychain/releases)
+[![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/rauhul/keychain/master/LICENSE)
 
 A simple inteferace for using the iOS Keychain, written in Swift. Heavily based on the work done by Jason Rendel in [SwiftKeychainWrapper](https://github.com/jrendel/SwiftKeychainWrapper).
 
@@ -9,6 +13,32 @@ If you need to customize the keychain access to use a custom identifier or acces
 By default, the Keychain saves data as a Generic Password type in the iOS Keychain. It saves items such that they can only be accessed when the app is unlocked and open. If you are not familiar with the iOS Keychain usage, this provides a safe default for using the keycain.
 
 Users that want to deviate from this default implementation can specifiy keychain accessibility for each request (store, retrieve, etc...) to a Keychain instance.
+
+## Requirements
+- Swift 5.0+
+
+### Notes
+Keychain 0.1.2 is the last version that supports cocoapods
+Keychain 0.1.2 is the last release with Swift 4.2 support
+
+## Installation
+
+### Swift Package Manager
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler.
+
+Once you have your Swift package set up, adding Keychain as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .Package(url: "https://github.com/rauhul/keychain.git", from: "0.2.0")
+]
+```
+
+To use the keychain in your app, import Keychain into the file(s) where you want to use it.
+
+``` swift
+import Keychain
+```
 
 ## General Usage
 
@@ -63,26 +93,3 @@ By default, all items saved to keychain can only be accessed when the device is 
 ``` swift
 Keychain.default.store(<KeychainStorable>, forKey: "exampleKey", withAccessibility: .afterFirstUnlock)
 ```
-
-## Installation
-
-### CocoaPods
-You can use [CocoaPods](http://cocoapods.org/) to install SwiftKeychainAccess by adding it to your `Podfile`:
-
-``` ruby
-use_frameworks!
-platform :ios, '10.0'
-
-target 'target_name' do
-   pod 'SwiftKeychainAccess'
-end
-```
-
-To use the keychain in your app, import Keychain into the file(s) where you want to use it.
-
-``` swift
-import Keychain
-```
-
-### Manually
-Download and drop `Keychain.swift` and `KeychainStorable.swift` into your project.
